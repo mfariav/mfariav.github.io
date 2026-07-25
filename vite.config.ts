@@ -1,10 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
+  base: "./",
   plugins: [
+    tailwindcss(),
     TanStackRouterVite({
       target: "react",
       autoCodeSplitting: true,
@@ -16,7 +19,6 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/",
   build: {
     outDir: "dist",
     emptyOutDir: true,

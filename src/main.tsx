@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { getRouter } from './router'
 import './styles.css'
 
-// Instancia o router e o queryClient
 const router = getRouter()
 const queryClient = new QueryClient()
 
