@@ -1,4 +1,4 @@
-name: Deploy TanStack / Vite site to Pages
+name: Deploy React site to Pages
 
 on:
   push:
@@ -35,8 +35,10 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Disable Jekyll
-        run: touch .output/public/.nojekyll
+      - name: Setup SPA Redirects for GitHub Pages
+        run: |
+          touch dist/.nojekyll
+          cp dist/index.html dist/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -44,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './.output/public'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
