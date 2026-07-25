@@ -1,0 +1,221 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-glow: var(--glow);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --animate-float-glow: float-glow 20s ease-in-out infinite alternate;
+  --animate-float-glow-reverse: float-glow-reverse 25s ease-in-out infinite alternate;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.98 0.005 60);
+  --foreground: oklch(0.20 0.015 20);
+
+  --surface: oklch(0.95 0.008 60);
+  --surface-2: oklch(0.91 0.010 60);
+
+  --card: oklch(0.96 0.008 60);
+  --card-foreground: oklch(0.20 0.015 20);
+  --popover: oklch(0.96 0.008 60);
+  --popover-foreground: oklch(0.20 0.015 20);
+
+  --primary: oklch(0.55 0.20 15);    
+  --primary-foreground: oklch(0.98 0.005 60);
+  --glow: oklch(0.65 0.22 20);
+
+  --secondary: oklch(0.92 0.010 60);
+  --secondary-foreground: oklch(0.20 0.015 20);
+  --muted: oklch(0.92 0.010 60);
+  --muted-foreground: oklch(0.45 0.015 40);
+  --accent: oklch(0.55 0.20 15);
+  --accent-foreground: oklch(0.98 0.005 60);
+  --destructive: oklch(0.60 0.22 27);
+  --destructive-foreground: oklch(0.98 0.005 60);
+
+  --border: oklch(0.85 0.01 60 / 60%);
+  --input: oklch(0.88 0.01 60);
+  --ring: oklch(0.55 0.20 15);
+
+  --gradient-hero: radial-gradient(ellipse at 20% 0%, oklch(0.62 0.18 15 / 0.15), transparent 60%),
+                   radial-gradient(ellipse at 80% 100%, oklch(0.62 0.18 15 / 0.10), transparent 55%);
+  --shadow-glow: 0 0 0 1px oklch(0.55 0.20 15 / 0.3), 0 10px 40px -10px oklch(0.55 0.20 15 / 0.3);
+  --shadow-soft: 0 4px 20px -4px oklch(0 0 0 / 0.1);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 20);
+  --foreground: oklch(0.96 0.005 60);
+
+  --surface: oklch(0.20 0.018 20);
+  --surface-2: oklch(0.24 0.020 20);
+
+  --card: oklch(0.20 0.018 20);
+  --card-foreground: oklch(0.96 0.005 60);
+  --popover: oklch(0.20 0.018 20);
+  --popover-foreground: oklch(0.96 0.005 60);
+
+  --primary: oklch(0.62 0.18 15);    
+  --primary-foreground: oklch(0.98 0.005 60);
+  --glow: oklch(0.72 0.20 20);
+
+  --secondary: oklch(0.26 0.020 20);
+  --secondary-foreground: oklch(0.96 0.005 60);
+  --muted: oklch(0.24 0.015 20);
+  --muted-foreground: oklch(0.70 0.015 40);
+  --accent: oklch(0.62 0.18 15);
+  --accent-foreground: oklch(0.98 0.005 60);
+  --destructive: oklch(0.60 0.22 27);
+  --destructive-foreground: oklch(0.98 0.005 60);
+
+  --border: oklch(0.30 0.02 20 / 60%);
+  --input: oklch(0.30 0.02 20);
+  --ring: oklch(0.62 0.18 15);
+
+  --gradient-hero: radial-gradient(ellipse at 20% 0%, oklch(0.45 0.15 15 / 0.35), transparent 60%),
+                   radial-gradient(ellipse at 80% 100%, oklch(0.40 0.12 25 / 0.25), transparent 55%);
+  --shadow-glow: 0 0 0 1px oklch(0.62 0.18 15 / 0.4), 0 10px 40px -10px oklch(0.62 0.18 15 / 0.5);
+  --shadow-soft: 0 4px 20px -4px oklch(0 0 0 / 0.5);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; font-size: 105%; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  ::selection { background: oklch(0.62 0.18 15 / 0.4); }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 2rem; 
+
+  @media (min-width: 768px) {
+    padding-inline: 3.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding-inline: 5rem;
+  }
+}
+
+@utility glow-border {
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--color-foreground), var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  .dark & {
+    background: linear-gradient(135deg, oklch(0.98 0.005 60), oklch(0.72 0.20 20));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+@utility marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes float-glow {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(80px, 100px) scale(1.3);
+  }
+  100% {
+    transform: translate(-40px, 50px) scale(0.9);
+  }
+}
+
+@keyframes float-glow-reverse {
+  0% {
+    transform: translate(0px, 0px) scale(0.9);
+  }
+  50% {
+    transform: translate(-100px, -80px) scale(1.2);
+  }
+  100% {
+    transform: translate(60px, -40px) scale(1);
+  }
+}
+
+@utility animate-float-glow {
+  animation: float-glow 50s ease-in-out infinite alternate;
+}
+
+@utility animate-float-glow-reverse {
+  animation: float-glow-reverse 60s ease-in-out infinite alternate;
+}
+
+@utility caret {
+  display: inline-block;
+  width: 3px;
+  background: var(--color-primary);
+  margin-left: 4px;
+  animation: blink 1s steps(1) infinite;
+}
