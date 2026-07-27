@@ -54,7 +54,10 @@ export function Curriculo() {
           <div className="flex flex-wrap gap-2">
 
             <a
-              href="#"
+              href="./curriculo-maira-vieira.pdf"
+              download="Curriculo_Maira_Vieira.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:brightness-110 transition"
             >
               <Download className="h-4 w-4" /> Baixar PDF
