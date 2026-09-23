@@ -2,9 +2,9 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight, Code2, FileText } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-// Imports das imagens
 import ntwBanner2 from "@/assets/projeto-automacao/NTW-Studio-banner2.webp";
 import revesteBanner from "@/assets/projeto-reveste/Reveste-banner.webp";
+import lpBanner from "@/assets/projeto-paginas/LP-banner.webp";
 import thumbExhibitly from "@/assets/projetos/Thumb_01.png";
 import thumbCompilado from "@/assets/projetos/Thumb_02.png";
 import thumbORG from "@/assets/projetos/Thumb_03.png";
@@ -56,6 +56,21 @@ const PROJECTS: Project[] = [
     links: [
       { label: "Ver Case Study", href: "/projeto/reveste", icon: "case" },
       { label: "Ver Repositório", href: "https://github.com/mfariav/reveste-web", icon: "code" },
+    ],
+  },
+  {
+    id: "landing-pages",
+    title: "Landing Pages & Páginas Institucionais",
+    categories: ["Desenvolvimento Web", "UX/UI"],
+    tags: ["HTML5", "CSS3", "JavaScript", "WordPress", "Elementor Pro", "Responsive Design"],
+    readTime: "3 min de leitura",
+    description:
+      "Desenvolvimento de interfaces comerciais focadas em conversão, performance e fidelidade ao design.",
+    gradient: "from-[#1e1b4b] via-[#312e81] to-[#0f172a]",
+    cover: lpBanner,
+    featured: true,
+    links: [
+      { label: "Ver Projetos", href: "/projeto/landing-pages", icon: "case" },
     ],
   },
   {

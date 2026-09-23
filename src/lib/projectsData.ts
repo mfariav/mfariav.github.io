@@ -23,6 +23,17 @@ import revesteTelaMinha2 from '../assets/projeto-reveste/Reveste-tela-minha-2.jp
 import revesteTelaMinha3 from '../assets/projeto-reveste/Reveste-tela-minha-3.jpg';
 import revesteTelaMinha4 from '../assets/projeto-reveste/Reveste-tela-minha-4.jpg';
 
+// Imports das Mídias - Landing Pages & UI
+import lpBanner from '../assets/projeto-paginas/LP-banner.webp';
+import lpPage01 from '../assets/projeto-paginas/page-01.webp';
+import lpPage02 from '../assets/projeto-paginas/page-02.webp';
+import lpPage03 from '../assets/projeto-paginas/page-03.webp';
+import lpPage04 from '../assets/projeto-paginas/page-04.webp';
+import lpPage05 from '../assets/projeto-paginas/page-05.webp';
+import lpPage06 from '../assets/projeto-paginas/page-06.webp';
+import lpPage07 from '../assets/projeto-paginas/page-07.webp';
+import lpPage08 from '../assets/projeto-paginas/page-08.webp';
+
 export interface ProjectLink {
   label: string;
   href: string;
@@ -42,11 +53,6 @@ export interface TechnicalDetails {
   artifacts?: string;
 }
 
-export interface CustomScreen {
-  src: string;
-  alt: string;
-}
-
 export interface ProjectMedia {
   heroBanner?: string;
   loginScreen?: string;
@@ -60,8 +66,22 @@ export interface ProjectMedia {
   myScreens?: { src: string; alt: string }[];
 }
 
+export interface ShowcaseItem {
+  title: string;
+  type: string;
+  techBadge: string;
+  summary: string;
+  challenge: string;
+  results: string;
+  image: string;
+  liveUrl?: string;
+  repoUrl?: string;
+  tags?: string[];
+}
+
 export interface Project {
   id: string;
+  type: 'case-study' | 'landing-page';
   title: string;
   categories: string[];
   tags: string[];
@@ -72,7 +92,6 @@ export interface Project {
   featured: boolean;
   links: ProjectLink[];
 
-  // Campos detalhados para a página de Case Study
   year?: string;
   period?: string;
   role?: string;
@@ -89,12 +108,14 @@ export interface Project {
   nextSteps?: string;
   disclaimer?: string;
   media?: ProjectMedia;
-  myScreens?: { src: string; alt: string }[];
+
+  showcases?: ShowcaseItem[];
 }
 
 export const projectsData: Record<string, Project> = {
   "automacao-ntw": {
     id: "automacao-ntw",
+    type: "case-study",
     title: "Sistema de Automação de Design",
     categories: ["Desenvolvimento Web", "UX/UI"],
     tags: ["HTML", "CSS", "JavaScript", "PHP"],
@@ -166,6 +187,7 @@ export const projectsData: Record<string, Project> = {
   },
   "reveste": {
     id: "reveste",
+    type: "case-study",
     title: "ReVeste – Plataforma de Moda Circular",
     categories: ["Desenvolvimento Web", "Full-Stack"],
     tags: [
@@ -222,7 +244,7 @@ export const projectsData: Record<string, Project> = {
       artifacts:
         "Durante o projeto também foram produzidos documentações do projeto, como personas, histórias de usuário, casos de uso, arquitetura da solução e diagrama de classes.",
       valuationAlgorithm:
-        "O maior desafio técnico do desenvolvimento foi codificar o algoritmo de valoração de pontuação. Criou-se uma lógica parametrizada nas Controllers capaz de processar múltiplas variáveis de entrada (marca, tipo de peça e estado declarado) e converter o resultado em créditos em tempo real.",
+        "O maior desafio técnico do desenvolvimento foi codificar o algoritmo de valoração de pontuação. Criou-se uma lógica parametrizada nas Controllers capaz de processar múltiplas variáveis de entrada (marca, tipo de peça e estado declared) e converter o resultado em créditos em tempo real.",
     },
     results: [
       "Sistema 100% testado e validado em planos de testes de software e usabilidade, atingindo altos índices de satisfação em cenários reais.",
@@ -251,4 +273,109 @@ export const projectsData: Record<string, Project> = {
       { label: "Ver Repositório", href: "https://github.com/mfariav/reveste-web", icon: "code" },
     ],
   },
+  "landing-pages": {
+    id: "landing-pages",
+    type: "landing-page",
+    title: "Hub de Landing Pages & Páginas Institucionais",
+    categories: ["UX/UI", "Front-End"],
+    tags: ["HTML5", "CSS3", "JavaScript", "WordPress", "Elementor Pro", "Responsive Design"],
+    readTime: "3 min de leitura",
+    description: "Desenvolvimento de interfaces comerciais focadas em conversão, performance e fidelidade ao design.",
+    gradient: "from-[#1e1b4b] via-[#312e81] to-[#0f172a]",
+    cover: "Landing Pages",
+    featured: false,
+    showcases: [
+      {
+        title: "Experience Teresópolis — Imersão & Evento Fechado",
+        type: "Landing Page do Evento",
+        techBadge: "Código Customizado (HTML/CSS/JS) / Elementor Pro / WordPress",
+        summary: "Página guia e institucional com a programação completa do evento exclusivo promovido pela franqueadora para os seus franqueados em Teresópolis.",
+        challenge: "Transmitir sofisticação, organização e modernidade, reunindo horários, palestrantes e orientações logísticas em uma interface fluida e de fácil consulta rápida pelo celular durante o evento.",
+        results: "Experiência de navegação leve e intuitiva para o franqueado participante, reforçando a autoridade e o padrão corporativo da marca NTW.",
+        image: lpPage01,
+        liveUrl: "https://page.ntwfranquiacontabil.com.br/experience-teresopolis/",
+        tags: ["Eventos", "Mobile-First", "WordPress"]
+      },
+      {
+        title: "NTW Digital + CBMF — Parceria Fitness",
+        type: "Landing Page de Co-marketing & Captura de Leads",
+        techBadge: "Código Customizado (HTML/CSS/JS) / Elementor Pro / WordPress / Integração de Forms",
+        summary: "Página focada na conversão de profissionais do ecossistema fitness (da Confederação Brasileira de Musculação e Fisiculturismo) para os serviços de contabilidade digital da NTW.",
+        challenge: "Criar uma comunicação visual e linguagem que conversasse diretamente com o público da CBMF (educadores físicos, personal trainers e proprietários de academias), conectando a relevância da gestão contábil com as dores específicas do mercado fitness.",
+        results: "Landing page com apelo dinâmico e esportivo, estruturada para otimizar conversões e viabilizar o rastreamento de comissões para o franqueado parceiro da campanha.",
+        image: lpPage02,
+        liveUrl: "https://lp.ntwcontabilidade.com.br/ntw-digital-cbmf/",
+        tags: ["Co-marketing", "Fitness", "Lead Capture"]
+      },
+      {
+        title: "NTW Digital + OnCourt Pro — Parceria Esporte",
+        type: "Landing Page de Co-marketing & Captura de Leads",
+        techBadge: "Código Customizado (HTML/CSS/JS) / Elementor Pro / WordPress / Integração de Forms",
+        summary: "Página de captura voltada para a oferta de serviços contábeis especializados para treinadores, gestores e arenas de tênis, beach tennis e padel usuários da OnCourt Pro.",
+        challenge: "Construir uma navegação moderna e objetiva alinhada à estética da plataforma OnCourt Pro, demonstrando como a contabilidade simplificada libera mais tempo para a gestão das aulas e arenas.",
+        results: "Fluxo contínuo de apresentação de benefícios com foco em conversão rápida, mobile-first e captura eficiente de contatos comerciais.",
+        image: lpPage03,
+        liveUrl: "https://lp.ntwcontabilidade.com.br/ntw-digital-oncourt-pro/",
+        tags: ["SaaS Partnership", "Sports", "Conversion"]
+      },
+      {
+        title: "Tutoreanos — Página Comercial da Unidade",
+        type: "Template Comercial / Página Regional",
+        techBadge: "Código Customizado (HTML/CSS/JS) / Elementor Pro / WordPress / Componentes Reutilizáveis com Pods",
+        summary: "Modelo de página comercial padrão desenvolvido para ser replicado entre franqueados da marca Tutoreanos na captação de clientes locais.",
+        challenge: "Projetar um layout modular e escalável que mantivesse a consistência visual da marca corporativa, permitindo personalizações locais (como contatos, endereço e foto do consultor da unidade).",
+        results: "Padronização comercial para a rede de franquias, agilizando o lançamento de novas páginas de unidades com máxima eficiência.",
+        image: lpPage04,
+        liveUrl: "https://tutoreanos.com.br/unidade/tutoreanos-sao-jose-dos-campos/",
+        tags: ["Template Scalability", "Pods Framework", "Franchise"]
+      },
+      {
+        title: "Novo Mapa Tributário — Evento & Palestra",
+        type: "Landing Page de Captura / Inscrição de Evento",
+        techBadge: "Código Customizado (HTML/CSS/JS) / Elementor Pro / WordPress / Integração de Forms",
+        summary: "Página de alta conversão desenvolvida para promover a palestra/aula presencial sobre os impactos da Reforma Tributária no setor empresarial.",
+        challenge: "Traduzir um tema técnico e denso (reforma tributária) em uma proposta de valor direta e urgente para empresários, estimulando a inscrição imediata no evento.",
+        results: "Seções claras com apresentação de especialistas e gatilhos mentais que aumentaram a taxa de conversão do formulário.",
+        image: lpPage05,
+        liveUrl: "https://lp.ntwcontabilidade.com.br/novo-mapa-tributario/",
+        tags: ["Reforma Tributária", "Inscrição", "B2B"]
+      },
+      {
+        title: "Equity Contábil — M&A e Aquisição de Escritórios",
+        type: "Site Institucional & Geração de Leads Qualificados",
+        techBadge: "Código Customizado (HTML/CSS/JS) / Elementor Pro / WordPress",
+        summary: "Website corporativo para a Equity Contábil, focado em atrair donos de escritórios de contabilidade interessados em vender ou realizar fusões com a rede.",
+        challenge: "Criar uma identidade sólida, sóbria e altamente profissional que transmitisse extrema confidencialidade, segurança financeira e autoridade para negociações de fusões e aquisições (M&A).",
+        results: "Posicionamento de marca transparente, com formulários estratégicos para qualificação imediata de proprietários interessados em valuation e venda.",
+        image: lpPage06,
+        liveUrl: "https://equitycontabil.com/",
+        tags: ["M&A", "Corporate", "Leads Qualificados"]
+      },
+      {
+        title: "Tutoreanos — Bio Links Social (São José dos Campos)",
+        type: "Página Bio Link",
+        techBadge: "Elementor Pro / WordPress / CSS Customizado / Componentes Reutilizáveis com Pods",
+        summary: "Hub centralizador de links otimizado para navegação mobile via biografia do Instagram da unidade.",
+        challenge: "Substituir ferramentas genéricas de agrupamento de links por uma solução própria da marca, leve, com carregamento instantâneo no celular e sem rastreadores desnecessários que atrasem o clique do usuário.",
+        results: "100% de controle sobre a estética da marca, zero dependência de plataformas de terceiros e otimização da taxa de cliques para o WhatsApp comercial da unidade.",
+        image: lpPage07,
+        liveUrl: "https://tutoreanos.com.br/links/tutoreanos-sao-jose-dos-campos/",
+        tags: ["Bio Links", "Mobile Optimization", "Social Media"]
+      },
+      {
+        title: "NTW Prime Club — Clube VIP de Franqueados",
+        type: "Landing Page Institucional",
+        techBadge: "Elementor Pro / WordPress / CSS Customizado",
+        summary: "Landing page em formato de documento institucional explicativo sobre o clube VIP da franqueadora, desenvolvida para atrair e qualificar franqueados elegíveis da rede.",
+        challenge: "Traduzir a sensação de exclusividade e alto valor do \"Prime Club\" sem facilitar cadastros indesejados. O design precisava ser sóbrio e informativo, seguindo a sua identidade visual, contendo apenas uma chamada estratégica para ação (botão de acesso), evitando abordagens comerciais invasivas.",
+        results: "Apresentação clara das vantagens do clube, valorização do senso de comunidade entre franqueados e direcionamento qualificado para o canal de atendimento interno.",
+        image: lpPage08,
+        liveUrl: "https://page.ntwfranquiacontabil.com.br/ntw-prime-club/",
+        tags: ["Exclusivo", "Franqueados VIP", "Institucional"]
+      }
+    ],
+    links: [
+      { label: "Ver Projetos", href: "#conteudo", icon: "doc" }
+    ]
+  }
 };

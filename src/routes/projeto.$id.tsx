@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { ArrowLeft, Clock, Code2, ShieldAlert, CheckCircle2, FileText, ArrowUpRight, Sparkles, Play, Layers } from 'lucide-react';
 import { projectsData } from '../lib/projectsData';
+import { LandingPageLayout } from '../components/projects/LandingPageLayout';
 
 export const Route = createFileRoute('/projeto/$id')({
   component: ProjetoDetalhes,
@@ -24,6 +25,11 @@ function ProjetoDetalhes() {
         </Link>
       </main>
     );
+  }
+
+  // Roteamento de Layout por tipo de projeto
+  if (project.type === 'landing-page') {
+    return <LandingPageLayout project={project} />;
   }
 
   return (
@@ -234,7 +240,7 @@ function ProjetoDetalhes() {
                       ))}
                     </div>
 
-                    {/* 2. Galeria de Telas */}
+                    {/* Galeria de Telas */}
                     {(() => {
                       const screens = (project as any)?.myScreens || (project.media as any)?.myScreens;
 
@@ -267,7 +273,7 @@ function ProjetoDetalhes() {
                       );
                     })()}
 
-                    {/* 3. Vídeo Demonstração */}
+                    {/* Vídeo Demonstração */}
                     {project.media?.vitrineVideo && (
                       <div className="space-y-2 pt-4">
                         <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
@@ -303,7 +309,7 @@ function ProjetoDetalhes() {
                   </p>
                 )}
 
-                {/* ===== CASO 1: AUTOMAÇÃO NTW ===== */}
+                {/* CASO 1: AUTOMAÇÃO NTW */}
                 {project.id === "automacao-ntw" && (
                   <>
                     <div className="space-y-3">
@@ -335,7 +341,6 @@ function ProjetoDetalhes() {
                       </div>
                     </div>
 
-                    {/* Estrutura de Diretórios */}
                     {project.media?.structureImage && (
                       <div className="space-y-2 pt-2">
                         <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
@@ -352,7 +357,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* Code Tour Video */}
                     {project.media?.codeTourVideo && (
                       <div className="space-y-2 pt-2">
                         <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
@@ -371,7 +375,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* Impacto & Resultados */}
                     {project.results && (
                       <div className="pt-2">
                         <h3 className="text-base font-semibold mb-3">Impacto & Resultados</h3>
@@ -386,7 +389,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* Diagrama de Resultados da Automação (Posicionado logo após os tópicos) */}
                     {project.media?.resultsDiagram && (
                       <div className="space-y-2 pt-2">
                         <div className="overflow-hidden rounded-xl border border-border bg-card p-2">
@@ -399,7 +401,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* Disclaimer */}
                     {project.disclaimer && (
                       <blockquote className="border-l-2 border-primary/50 pl-3 py-1 text-xs text-muted-foreground italic">
                         "{project.disclaimer}"
@@ -408,12 +409,10 @@ function ProjetoDetalhes() {
                   </>
                 )}
 
-                {/* ===== REVESTE ===== */}
+                {/* CASO 2: REVESTE */}
                 {project.id === "reveste" && (
                   <>
-                    {/* OS 4 TÓPICOS INICIAIS */}
                     <div className="space-y-3">
-                      {/* Topico 1 */}
                       <div className="rounded-xl border border-border bg-card p-4">
                         <h3 className="font-semibold text-sm text-primary flex items-center gap-2 mb-1.5">
                           <Code2 className="h-4 w-4" /> Arquitetura MVC (.NET Core)
@@ -423,7 +422,6 @@ function ProjetoDetalhes() {
                         </p>
                       </div>
 
-                      {/* Topico 2 */}
                       <div className="rounded-xl border border-border bg-card p-4">
                         <h3 className="font-semibold text-sm text-primary flex items-center gap-2 mb-1.5">
                           <FileText className="h-4 w-4" /> Camada de Dados & Persistência (SQL Server)
@@ -433,7 +431,6 @@ function ProjetoDetalhes() {
                         </p>
                       </div>
 
-                      {/* Topico 3 */}
                       <div className="rounded-xl border border-border bg-card p-4">
                         <h3 className="font-semibold text-sm text-primary flex items-center gap-2 mb-1.5">
                           <Sparkles className="h-4 w-4" /> Infraestrutura e Deploy (Microsoft Azure)
@@ -443,7 +440,6 @@ function ProjetoDetalhes() {
                         </p>
                       </div>
 
-                      {/* Topico 4 */}
                       {project.technicalDetails.artifacts && (
                         <div className="rounded-xl border border-border bg-card p-4">
                           <h3 className="font-semibold text-sm text-primary flex items-center gap-2 mb-1.5">
@@ -456,7 +452,6 @@ function ProjetoDetalhes() {
                       )}
                     </div>
 
-                    {/* Estrutura de Diretórios */}
                     {project.media?.structureImage && (
                       <div className="space-y-2 pt-2">
                         <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
@@ -473,7 +468,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* Diagrama de Classes ReVeste com Legenda */}
                     {project.media?.resultsDiagram && (
                       <div className="space-y-2 pt-2">
                         <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
@@ -490,7 +484,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* Code Tour Video */}
                     {project.media?.codeTourVideo && (
                       <div className="space-y-2 pt-2">
                         <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
@@ -509,7 +502,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* O DESAFIO TÉCNICO SUPERADO*/}
                     {project.technicalDetails.valuationAlgorithm && (
                       <div className="rounded-xl border border-border bg-card p-4 pt-2">
                         <h3 className="font-semibold text-sm text-primary flex items-center gap-2 mb-1.5">
@@ -521,7 +513,6 @@ function ProjetoDetalhes() {
                       </div>
                     )}
 
-                    {/* RESULTADO OPERACIONAL */}
                     {project.results && (
                       <div className="pt-2">
                         <h3 className="text-base font-semibold mb-3">Resultado Operacional</h3>
